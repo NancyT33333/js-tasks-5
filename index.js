@@ -5,8 +5,17 @@ module.exports = {
      * @param {Object} subscriber
      * @param {Function} handler
      */
-    on: function (event, subscriber, handler) {
 
+    eventsObj: {},
+
+    on: function (event, subscriber, handler) {
+        var event=event
+        this.eventsObj.event = {
+            subscriber: subscriber,
+            handler: handler,
+        };
+
+        return this;
     },
 
     /**
@@ -15,6 +24,9 @@ module.exports = {
      */
     off: function (event, subscriber) {
 
+
+
+        return this;
     },
 
     /**
@@ -22,5 +34,7 @@ module.exports = {
      */
     emit: function (event) {
 
+
+        return this;
     }
 };

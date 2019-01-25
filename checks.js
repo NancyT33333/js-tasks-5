@@ -2,7 +2,7 @@
 var assert = require('assert');
 
 // Подключаем свою функцию
-var emitter = require('./index.js');
+var emitter = require('/home/anna/Рабочий стол/Clone of GitHubrep/js-tasks-5/index.js');
 
 // Определим объект для счетчика нотификаций
 var notifications = {
@@ -59,3 +59,92 @@ assert.deepEqual(logger.logs, [
 ]);
 
 console.info('OK!');
+
+/**
+
+var lecturer = emitter;
+
+var daria = {
+    focus: 5,
+    wisdom: 1
+};
+
+lecturer.on('begin', daria, function () {
+    this.focus += 2;
+});
+
+lecturer.on('slide', daria, function () {
+    this.wisdom += this.focus * 0.25;
+    this.focus += 1;
+});
+
+var iakov = {
+    focus: 5,
+    wisdom: 1
+};
+
+lecturer.on('begin', iakov, function () {
+    this.wisdom = 0;
+});
+
+lecturer.on('slide', iakov, function () {
+    this.wisdom += this.focus * 0.5;
+    this.focus -= 2;
+});
+
+lecturer.on('slide.funny', iakov, function () {
+    this.focus += 5;
+});
+
+var pyotr = {
+    focus: 5,
+    wisdom: 1
+};
+
+lecturer.on('begin', pyotr, function () {
+    this.wisdom = 3;
+    this.focus = 10;
+});
+
+lecturer.on('slide', pyotr, function () {
+    this.wisdom += this.focus * 0.1;
+});
+
+
+
+var roma = {
+    focus: 5,
+    wisdom: 1
+};
+
+lecturer.on('slide', roma, function () {
+    this.wisdom += 1 + this.focus * 0.5;
+    this.focus -= 2;
+});
+
+
+
+lecturer.emit('begin');
+
+lecturer.emit('slide.text');
+lecturer.emit('slide.text');
+lecturer.emit('slide.text');
+lecturer.emit('slide.funny');
+
+lecturer.emit('slide.text');
+lecturer.emit('slide.funny');
+
+lecturer.off('slide.funny', iakov);
+
+lecturer.emit('slide.text');
+lecturer.emit('slide.funny');
+
+lecturer.emit('slide.text');
+lecturer.emit('slide.funny');
+
+lecturer.off('slide', roma);
+
+lecturer.emit('slide.text');
+lecturer.emit('slide.text');
+
+lecturer.emit('end');  */
