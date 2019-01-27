@@ -60,7 +60,6 @@ assert.deepEqual(logger.logs, [
 
 console.info('OK!');
 
-/**
 
 var lecturer = emitter;
 
@@ -147,4 +146,4 @@ lecturer.off('slide', roma);
 lecturer.emit('slide.text');
 lecturer.emit('slide.text');
 
-lecturer.emit('end');  */
+lecturer.emit('end');

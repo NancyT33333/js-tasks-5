@@ -9,11 +9,14 @@ module.exports = {
     eventsObj: {},
 
     on: function (event, subscriber, handler) {
-        var event=event
-        this.eventsObj.event = {
+
+        if ( !this.eventsObj.hasOwnProperty(event)) {
+            this.eventsObj[event] = []
+        };
+            this.eventsObj[event].push({
             subscriber: subscriber,
             handler: handler,
-        };
+        });
 
         return this;
     },
@@ -23,7 +26,15 @@ module.exports = {
      * @param {Object} subscriber
      */
     off: function (event, subscriber) {
+        if (typeof this.eventsObj[event] !== 'undefined') {
+            for (let i = this.eventsObj[event].length-1; i>=0; --i) {
+                if (this.eventsObj[event][i]['subscriber'] === subscriber) {
+                    delete this.eventsObj[event][i];
+                }
 
+            }
+
+        }
 
 
         return this;
@@ -33,6 +44,10 @@ module.exports = {
      * @param {String} event
      */
     emit: function (event) {
+        if (this.eventsObj.hasOwnProperty(event)) {
+
+            this.eventsObj[event].forEach((action) => action['handler'].call(action['subscriber']))
+            }
 
 
         return this;
