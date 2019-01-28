@@ -27,7 +27,8 @@ emitter
         // this указывает на logger
         this.logs.push('Добавлена новая нотификация. Количество - ' + notifications.counter);
     })
-    .emit('new_notification');
+    .emit('new_notification')
+    .emit('doesntexist');
 
 // Проверяем количество нотификаций
 assert.equal(notifications.counter, 1, 'Получена одна нотификация');
@@ -43,10 +44,17 @@ assert.deepEqual(logger.logs, [
 // На время отключаем логгирование, а затем снова включаем
 emitter
     .off('new_notification', logger)
+    .off('new_notification', logger)
+
     .emit('new_notification')
+   /** .off()
+    .off('new_notification')*/
     .on('new_notification', logger, function () {
         this.logs.push('Новое событие new_notification!');
     })
+
+
+
     .emit('new_notification');
 
 // Проверяем количество нотификаций
@@ -121,7 +129,7 @@ lecturer.on('slide', roma, function () {
     this.focus -= 2;
 });
 
-
+/**
 
 lecturer.emit('begin');
 
@@ -146,4 +154,4 @@ lecturer.off('slide', roma);
 lecturer.emit('slide.text');
 lecturer.emit('slide.text');
 
-lecturer.emit('end');
+lecturer.emit('end'); */

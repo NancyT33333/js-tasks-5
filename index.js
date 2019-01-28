@@ -10,6 +10,7 @@ module.exports = {
 
     on: function (event, subscriber, handler) {
 
+
         if ( !this.eventsObj.hasOwnProperty(event)) {
             this.eventsObj[event] = []
         };
@@ -26,10 +27,15 @@ module.exports = {
      * @param {Object} subscriber
      */
     off: function (event, subscriber) {
-        if (typeof this.eventsObj[event] !== 'undefined') {
+        if (typeof this.eventsObj[event] !== 'undefined' && subscriber == undefined) {
             for (let i = this.eventsObj[event].length-1; i>=0; --i) {
+                this.eventsObj[event].splice(i, 1);
+            }
+        } else if (typeof this.eventsObj[event] !== 'undefined') {
+            for (let i = this.eventsObj[event].length-1; i>=0; --i) {
+
                 if (this.eventsObj[event][i]['subscriber'] === subscriber) {
-                    delete this.eventsObj[event][i];
+                    this.eventsObj[event].splice(i, 1);
                 }
 
             }
